@@ -1,26 +1,13 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { getOrders, deleteOrder } from '../util/requests';
-
-const Order = ({ item, onDelete }) => {
-    return (
-        <>
-            <li>
-                {item.Crust} {item.Flavor} {item.Order_ID} {item.Size}
-            </li>
-            <button onClick={onDelete}>
-                Delete order
-            </button>
-        </>
-    );
-};
+import OrderCard from '../components/OrderCard';
   
 const PastOrders = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const updateResults = useCallback(() => {
-        console.log('UPDATING....');
         const fetchPosts = async () => {
             await getOrders()
                   .then(results => {
@@ -37,24 +24,29 @@ const PastOrders = () => {
     
     return (
       <>
-        <Box>
+        <Box padding="30px">
             {loading ? <div>Loading orders...</div>
             : (
-            <ul>
+            <Grid container spacing={3}>
                 {data?.map(item => {
-                    return <Order 
-                                item={item} 
-                                onDelete={async () => {
-                                    await deleteOrder(item.Order_ID)
-                                            .then(() => {
-                                                updateResults();
-                                            }
-                                    );
-                                }}
-                                key={item.Order_ID}
-                            />;
+                    if (item.Table_No < 100) {
+                        return null;
+                    }
+                    return (
+                        <OrderCard 
+                            item={item} 
+                            onDelete={async () => {
+                                await deleteOrder(item.Order_ID)
+                                        .then(() => {
+                                            updateResults();
+                                        }
+                                );
+                            }}
+                            key={item.Order_ID}
+                        />
+                    );
                 })}
-            </ul>
+            </Grid>
             )}
             
         </Box>

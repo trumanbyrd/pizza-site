@@ -4,10 +4,10 @@ import { postOrder } from '../util/requests';
 
 
 const defaultOrder = {
-    Crust: "PlaceholderCrust",
-    Flavor: "PlaceholderFlavor",
-    Size: "PlaceholderSize",
-    Table_No: 100 + Math.floor(Math.random() * 20)
+    Crust: "pan",
+    Flavor: "pepperoni",
+    Size: "m",
+    Table_No: 109
 }
 
 
