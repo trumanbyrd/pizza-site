@@ -18,9 +18,12 @@ export const authCredentials = {
 
 export const ordersUrl = `${proxy}${orders}`;
 
+export const tableNoOffset = 250;
+
 export const colors = {
     navbar: '#5c5c5c',
     background: '#866c6c',
+    backgroundDark: '#9b7c7c',
     link: {
         default: '#7b7b7b',
         hover: '#4b4b4b',

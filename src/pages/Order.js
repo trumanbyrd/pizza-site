@@ -3,7 +3,30 @@ import { useHistory } from 'react-router';
 import { Dialog, Box, TextField, Button, Typography } from '@material-ui/core';
 import Select from '../components/Select';
 import { postOrder } from '../util/requests';
-import { Flavors, Crusts, Sizes } from '../util/constants';
+import { colors, tableNoOffset } from '../util/constants'; 
+import { Flavors, Crusts, Sizes, FlavorImages } from '../util/constants';
+import styled from 'styled-components';
+
+const HelpText = styled(Box)`
+    font-family: "Arial Black", Gadget, sans-serif;
+    width: 100%;
+    font-size: 72px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const OrderFieldsWrapper = styled(Box)`
+    background-color: ${colors.backgroundDark};
+    padding: 0px 20px;
+    border-radius: 15px;
+`;
+
+const StyledButton = styled(Button)`
+    background-color: ${colors.backgroundDark};
+`;
 
 const Order = () => {
     const [flavor, setFlavor] = useState(null);
@@ -24,7 +47,11 @@ const Order = () => {
     }, [crust, flavor, size, tableNo]);
 
     return (
-    <Box display="flex" justifyContent="space-evenly" position="absolute" left="50%" top="50%">
+    <>
+    <HelpText>
+        Select your options!
+    </HelpText>
+    <Box display="flex" justifyContent="space-evenly">
         <Dialog 
             open={confirmed}
             onClose={() => {
@@ -49,7 +76,7 @@ const Order = () => {
 
             </Box>
         </Dialog>
-        <Box display="flex" flexDirection="column">
+        <OrderFieldsWrapper display="flex" flexDirection="column" justifyContent="center">
             <Select 
                 label="Flavor"
                 value={flavor}
@@ -70,13 +97,18 @@ const Order = () => {
             />
             <TextField 
                 onChange={event => {
-                    setTableNo(Number(event.target.value) ? Number(event.target.value) + 100 : null);
+                    setTableNo(Number(event.target.value) ? Number(event.target.value) + tableNoOffset : null);
                 }}
                 label="Table #"
             />
-        </Box>
-        <Box display="flex" pr="4em">
-            <Button
+        </OrderFieldsWrapper>
+        <Box display="flex" pr="4em" flexDirection="column" justifyContent="center">
+            <Box display="flex" width="400px" height="300px" justifyContent="center" mb="20px">
+                {flavor ? <img src={FlavorImages[flavor] } alt="Your order" /> : 
+                <div>Waiting for selection...</div>}
+            </Box>
+            <StyledButton
+                variant="contained"
                 disabled={!crust || !flavor || !size || !tableNo || tableNo < 1}
                 onClick={() => {
                     postOrder(getOrder())
@@ -84,9 +116,10 @@ const Order = () => {
                 }}
             >
                 Submit order
-            </Button>
+            </StyledButton>
         </Box>
     </Box>
+    </>
     );
   };
 

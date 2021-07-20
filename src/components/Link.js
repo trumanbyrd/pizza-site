@@ -18,5 +18,6 @@ export const Link = styled(MuiLink)`
         background-color: ${colors.link.hover};
         border-radius: 8px;
         color: ${colors.link.textHover};
+        text-decoration: none;
       }
 `;

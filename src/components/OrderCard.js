@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlavorImages } from '../util/constants';
+import { FlavorImages, tableNoOffset } from '../util/constants';
 import {
         Button, 
         Card,
@@ -58,7 +58,7 @@ export const OrderCard = ({ item, onDelete }) => {
                                         <b>Size: </b>{item.Size} <br />
                                         <b>Flavor: </b>{item.Flavor} <br />
                                         <b>Crust: </b>{item.Crust} <br />
-                                        <b>Table: </b>{item.Table_No - 100}
+                                        <b>Table: </b>{item.Table_No - tableNoOffset}
                                     </Typography>
                                 </Box>
                                 <Box maxWidth="200px">
