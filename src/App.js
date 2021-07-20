@@ -1,46 +1,22 @@
-import './App.css';
-import { Box } from '@material-ui/core';
+import React from 'react';
 import { BrowserRouter as Router,
          Switch,
          Route } from 'react-router-dom';
-
-const Home = () => {
-  return (
-    <Box display="flex" justifyContent="space-around">
-      <div>Home</div>
-      <a href="/order">Order</a>
-      <a href="/confirm">Confirm</a>
-    </Box>
-  );
-};
-
-const Order = () => {
-  return (
-    <Box display="flex" justifyContent="space-around">
-      <a href="/">Home</a>
-      <div>Order</div>
-      <a href="/confirm">Confirm</a>
-    </Box>
-  );
-};
-
-const Confirm = () => {
-  return (
-    <Box display="flex" justifyContent="space-around">
-      <a href="/">Home</a>
-      <a href="/order">Order</a>
-      <div>Confirm</div>
-    </Box>
-  );
-};
+import Navbar from './components/Navbar';
+import Confirm from './pages/Confirm';
+import Order from './pages/Order';
+import Home from './pages/Home';
+import PastOrders from './pages/PastOrders';
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/order" component={Order}/>
         <Route path="/confirm" component={Confirm} />
+        <Route path="/past-orders" component={PastOrders} />
       </Switch>
     </Router>
   );
