@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlavorImages, Flavors, Crusts, Sizes } from '../util/constants';
+import { FlavorImages } from '../util/constants';
 import {
         Button, 
         Card,
@@ -55,15 +55,15 @@ export const OrderCard = ({ item, onDelete }) => {
                             <Box display="flex" justifyContent="space-between">
                                 <Box>
                                     <Typography variant="body2" color="textSecondary" component="p">
-                                        <b>Size: </b>{Sizes[item.Size]} <br />
-                                        <b>Flavor: </b>{Flavors[item.Flavor]} <br />
-                                        <b>Crust: </b>{Crusts[item.Crust]} <br />
+                                        <b>Size: </b>{item.Size} <br />
+                                        <b>Flavor: </b>{item.Flavor} <br />
+                                        <b>Crust: </b>{item.Crust} <br />
                                         <b>Table: </b>{item.Table_No - 100}
                                     </Typography>
                                 </Box>
                                 <Box maxWidth="200px">
                                     <Typography variant="body2" color="textSecondary" component="p">
-                                        <b>Order time: </b>{Date(item.Timestamp)}
+                                        <b>Order time: </b>{String(new Date(item.Timestamp))}
                                     </Typography>
                                 </Box>
                             </Box>

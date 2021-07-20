@@ -29,32 +29,32 @@ export const colors = {
     }
 };
 
-export const Flavors = {
-    cheese: 'Cheese',
-    pepperoni: 'Pepperoni',
-    margherita: 'Margherita',
-    supreme: 'Supreme',
-    meat: 'Meat Lovers'
-};
+export const Flavors = [
+    'Cheese',
+    'Pepperoni',
+    'Margherita',
+    'Supreme',
+    'Meat Lovers'
+];
 
-export const Sizes = {
-    s: 'Small',
-    m: 'Medium',
-    l: 'Large',
-    xl: 'Extra Large'
-};
+export const Sizes = [
+    'Small',
+    'Medium',
+    'Large',
+    'Extra Large'
+];
 
-export const Crusts = {
-    thin: 'Thin',
-    handtossed: 'Hand-tossed',
-    pan: 'Pan',
-    stuffed: 'Stuffed'
-};
+export const Crusts = [
+    'Thin',
+    'Hand-tossed',
+    'Pan',
+    'Stuffed'
+];
 
 export const FlavorImages = {
-    cheese: Cheese,
-    pepperoni: Pepperoni,
-    margherita: Margherita,
-    supreme: Supreme,
-    meat: MeatLovers
+    Cheese: Cheese,
+    Pepperoni: Pepperoni,
+    Margherita: Margherita,
+    Supreme: Supreme,
+    'Meat Lovers': MeatLovers
 };
